@@ -15,6 +15,10 @@ class CreateSofasTable extends Migration
     {
         Schema::create('sofas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('merksofa', 50); 
+            $table->integer('hargasofa'); 
+            $table->boolean('tersedia'); 
+            $table->float('berat'); 
             $table->timestamps();
         });
     }
