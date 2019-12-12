@@ -51,7 +51,7 @@
             @foreach ($sofas as $sofa)
               <tr>
                 <th scope="row">{{$sofa->id}}</th>
-                <td>{{$sofa->merksofa}}</td>
+                <td><a href="{{ action('SofaController@show', $sofa->id) }}">{{$sofa->merksofa}}</a></td>
                 <td>Rp. {{ number_format($sofa->hargasofa,2,",",".") }}</td>
                 <td>{{$sofa->berat}}gr</td>
                 <td>
@@ -74,7 +74,9 @@
             @endif
             </tbody>
           </table>
-          {{ $sofas->links() }}
+          <div align="center">
+            <a href=" {{route('main.create')}} " class="btn btn-success px-4">Buat Detail Produk Baru</a>
+          </div>
     </div>
 </body>
 <footer>

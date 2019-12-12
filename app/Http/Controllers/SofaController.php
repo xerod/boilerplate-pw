@@ -50,7 +50,7 @@ class SofaController extends Controller
             'merksofa' => $request->get('merksofa'),
             'hargasofa' => $request->get('hargasofa'),
             'berat' => $request->get('berat'),
-            'tersedia' => ($request->get('tersedia') ?: false),
+            'tersedia' => ($request->get('tersedia') == null ? true : false),
         ]);
 
         $sofa->save(); 
@@ -66,7 +66,8 @@ class SofaController extends Controller
      */
     public function show($id)
     {
-        //
+        $sofa = Sofa::find($id);
+        return view('main.show', compact('sofa'));
     }
 
     /**
