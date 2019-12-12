@@ -16,8 +16,10 @@ class SofaController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $sofas = Sofa::search($request->get('search'))->paginate(15);
-            $query = $request->get('search');	
+            $query = $request->get('search');
+            $sofas = DB::table('sofas')
+		    ->where('merksofa','like',"%".$query."%")
+		    ->paginate(15);
     	}else{
             $sofas = DB::table('sofas')->paginate(15);
             $query = '';	
